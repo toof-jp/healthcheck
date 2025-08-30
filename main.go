@@ -8,12 +8,12 @@ import (
 )
 
 func main() {
-	env := os.Getenv("ENV")
+	message := os.Getenv("MESSAGE")
 
 	http.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) {
-		log.Printf("/healthz accessed from %s, ENV=%s", r.RemoteAddr, env)
+		log.Printf("/healthz accessed from %s, MESSAGE=%s", r.RemoteAddr, message)
 		w.WriteHeader(http.StatusOK)
-		fmt.Fprintf(w, "%s", env)
+		fmt.Fprintf(w, "%s", message)
 	})
 
 	log.Println("listening on :8080")
