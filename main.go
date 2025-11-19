@@ -14,7 +14,7 @@ func main() {
 	http.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) {
 		log.Printf("/healthz accessed from %s, MESSAGE=%s SECRET=%s", r.RemoteAddr, message, secret)
 		w.WriteHeader(http.StatusOK)
-		fmt.Fprintf(w, "%s\n", message, secret)
+		fmt.Fprintf(w, "%s\n%s", message, secret)
 	})
 
 	log.Println("listening on :8080")
